@@ -49,6 +49,23 @@ void inline MainWindow::calculation(){
 
 }
 
+// Таблица критических значений хи-квадрат при alpha = 0.05
+float getChiCritical(int degrees_of_freedom) {
+    switch (degrees_of_freedom) {
+    case 1: return 3.841;
+    case 2: return 5.991;
+    case 3: return 7.815;
+    case 4: return 9.488;
+    case 5: return 11.070;
+    case 6: return 12.592;
+    case 7: return 14.067;
+    case 8: return 15.507;
+    case 9: return 16.919;
+    case 10: return 18.307;
+    default: return 9999;
+    }
+}
+
 void inline MainWindow::visual(){
     auto N = ui->spinBoxNexp->value();
     //наблюдаемые вероятности
@@ -71,7 +88,8 @@ void inline MainWindow::visual(){
     //дисперсия наблюдаемая
     double empirical_var = 0.0;
     for (size_t i = 0; i < statistic.size(); ++i) {
-        empirical_var += (((i+1) - empirical_mean) * ((i+1) - empirical_mean)) * (statistic[i] / N);
+        //empirical_var += (((i+1) - empirical_mean) * ((i+1) - empirical_mean)) * (statistic[i] / N);
+        empirical_var += (pow((i+1) - empirical_mean,2) * (statistic[i] / N));
     }
 
     ui->varianceE->setText(QString::number(empirical_var));
@@ -86,13 +104,30 @@ void inline MainWindow::visual(){
     //дисперсия теор
     double var = 0.0;
     for (size_t i = 0; i < probs.size(); ++i) {
-        var += (((i+1) - mean) * ((i+1) - mean)) * probs[i];
+        //var += (((i+1) - mean) * ((i+1) - mean)) * probs[i];
+        var += (pow((i+1) - mean,2) * probs[i]);
     }
     ui->varianceT->setText(QString::number(var));
 
     //Погрешности
     ui->lbl_err_var->setText(QString::number(abs(empirical_var - var) / var * 100) + " %");
     ui->lbl_err_mean->setText(QString::number(abs(empirical_mean - mean) / mean * 100)+ " %");
+
+    //хи-квадрат
+    //наблюдаемый
+    float chi2 = 0.0f;
+    for(auto i = 0; i < probs.size(); ++i){
+        float observed = statistic[i];
+        float expected = probs[i] * N;
+        chi2 += pow(observed - expected, 2) / expected;
+
+    }
+    float chi2_crit = getChiCritical(probs.size() - 1);
+
+    ui->lbl_chi_squared->setText(QString::number(chi2) + " > " + QString::number(chi2_crit) +
+                                 (chi2 > chi2_crit ? " Отвергаем гипотезу" : " Принимаем гипотезу"));
+
+    //крит.
 
     QBarSeries *series = new QBarSeries();
     series->append(set0);

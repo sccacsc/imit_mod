@@ -40,6 +40,9 @@ public:
     QLabel *varianceT;
     QLabel *varianceE;
     QLabel *lbl_err_var;
+    QHBoxLayout *horizontalLayout_7;
+    QLabel *label_3;
+    QLabel *lbl_chi_squared;
     QHBoxLayout *horizontalLayout;
     QPushButton *addProbBtn;
     QPushButton *startButton;
@@ -115,6 +118,22 @@ public:
 
 
         verticalLayout->addLayout(horizontalLayout_6);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName("label_3");
+        label_3->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        horizontalLayout_7->addWidget(label_3);
+
+        lbl_chi_squared = new QLabel(centralwidget);
+        lbl_chi_squared->setObjectName("lbl_chi_squared");
+
+        horizontalLayout_7->addWidget(lbl_chi_squared);
+
+
+        verticalLayout->addLayout(horizontalLayout_7);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -203,6 +222,8 @@ public:
         varianceT->setText(QCoreApplication::translate("MainWindow", "\321\202\320\265\320\276\321\200.", nullptr));
         varianceE->setText(QCoreApplication::translate("MainWindow", "\320\275\320\260\320\261\320\273\321\216\320\264.", nullptr));
         lbl_err_var->setText(QString());
+        label_3->setText(QCoreApplication::translate("MainWindow", "\320\245\320\270-\320\272\320\262\320\260\320\264\321\200\320\260\321\202: ", nullptr));
+        lbl_chi_squared->setText(QCoreApplication::translate("MainWindow", "\321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202", nullptr));
         addProbBtn->setText(QCoreApplication::translate("MainWindow", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214\n"
 "\320\262\320\265\321\200\320\276\321\217\321\202\320\275\320\276\321\201\321\202\321\214", nullptr));
         startButton->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\321\207\320\260\321\202\321\214\n"

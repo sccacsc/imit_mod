@@ -65,7 +65,7 @@ void MainWindow::on_pushButton_clicked()
     float chi_squared = nd->get_chi_squared();
     float chi_squared_crit = get_chi_squared_crit(categories.size() - 2 -1);
     ui->chi_squared->setText("Хи-квадрат " + QString::number(chi_squared) + " > " +
-                             QString::number(chi_squared_crit) +
+                             QString::number(chi_squared_crit) + "?"+
                                      (chi_squared > chi_squared_crit ? " Отвергаем гипотезу" : " Принимаем гипотезу"));
 
     ui->emp_mean->setText(QString::number(nd->get_emp_mean()));

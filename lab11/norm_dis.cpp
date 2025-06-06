@@ -56,7 +56,7 @@ std::vector<unsigned int> Norm_distr::generate_statistic() {
         float ni = static_cast<float>(stat[i]);
         float left = min + i * step; float right = left + step;
         float pi = normal_cdf(right, mean, std::sqrt(variance)) - normal_cdf(left, mean, std::sqrt(variance));
-        chi_squared += (ni * ni) / (N * pi);
+        if(pi != 0) chi_squared += (ni * ni) / (N * pi);
     }
     chi_squared -= N;
 

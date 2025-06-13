@@ -1,0 +1,6 @@
+C:\Users\Danil\Documents\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.vcxproj.AssemblyReference.cache
+C:\Users\Danil\Documents\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.MyForm.resources
+C:\Users\Danil\Documents\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.vcxproj.GenerateResource.cache
+C:\personal\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.vcxproj.AssemblyReference.cache
+C:\personal\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.MyForm.resources
+C:\personal\important\TSU\ABC\c++ new era\lab2Sim\lab2Sim\x64\Release\lab2Sim.vcxproj.GenerateResource.cache

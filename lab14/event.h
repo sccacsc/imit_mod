@@ -3,27 +3,28 @@
 
 class Agent;
 
-class Event{
-private:
+class Event {
+protected:
     float time;
     Agent* agent;
 public:
-    bool operator>(const Event& other) const {
-        return time > other.time;
-    }
+    Event(float t, Agent* a) : time(t), agent(a) {}
+    virtual ~Event() = default;
+    virtual void execute() = 0;
+    float get_time() const { return time; }
+    bool operator>(const Event& other) const { return time > other.time; }
 };
 
-
-class arrival_event : public Event{
+class ArrivalEvent : public Event {
 public:
-    arrival_event(Agent *a);
-    ~arrival_event();
+    ArrivalEvent(float t, Agent* a);
+    void execute() override;
 };
 
-class service_end_event : public Event{
+class ServiceEndEvent : public Event {
 public:
-    service_end_event(Agent *a);
-    ~service_end_event();
+    ServiceEndEvent(float t, Agent* a);
+    void execute() override;
 };
 
 #endif // EVENT_H

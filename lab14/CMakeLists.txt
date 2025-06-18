@@ -26,6 +26,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         agent.h
         event.h
         model.h
+        client.h
+        agent.cpp
+        event.cpp
+        model.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET lab14 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -15,15 +15,15 @@ public:
     bool operator>(const Event& other) const { return time > other.time; }
 };
 
-class ArrivalEvent : public Event {
+class arrival_event : public Event {
 public:
-    ArrivalEvent(float t, Agent* a);
+    arrival_event(float t, Agent* a);
     void execute() override;
 };
 
-class ServiceEndEvent : public Event {
+class service_end_event : public Event {
 public:
-    ServiceEndEvent(float t, Agent* a);
+    service_end_event(float t, Agent* a);
     void execute() override;
 };
 

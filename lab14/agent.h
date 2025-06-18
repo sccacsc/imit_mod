@@ -2,6 +2,7 @@
 #define AGENT_H
 
 #include <queue>
+#include <random>
 #include "client.h"
 
 class Event;
@@ -15,7 +16,11 @@ class Bank : public Agent {
 private:
     std::queue<Client> client_queue;
     int free_cashiers;  // число свободных кассиров
-    int served_clients = 0;  // количество обслуженных клиентов
+    int served_clients;  // количество обслуженных клиентов
+    std::random_device rd;
+    std::mt19937 gen;
+    std::exponential_distribution<> exp_dist;
+
 public:
     Bank(int num_cashiers);
     void new_client();
@@ -28,6 +33,10 @@ public:
 class InputFlow : public Agent {
 private:
     Bank* bank;
+
+    std::random_device rd;
+    std::mt19937 gen;
+    std::exponential_distribution<> exp_dist;
 public:
     explicit InputFlow(Bank* b);
     void process_event(Event* ev) override;

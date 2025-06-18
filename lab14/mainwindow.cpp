@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     global_model = model;
 
-    model->add_event(new ArrivalEvent(0.0f, input));
+    model->add_event(new arrival_event(0.0f, input));
 
     connect(timer, &QTimer::timeout, this, &MainWindow::on_timer_tick);
     timer->start(1000);

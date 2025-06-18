@@ -1,12 +1,12 @@
 #include "event.h"
 #include "agent.h"
 
-ArrivalEvent::ArrivalEvent(float t, Agent* a) : Event(t, a) {}
-void ArrivalEvent::execute() {
+arrival_event::arrival_event(float t, Agent* a) : Event(t, a) {}
+void arrival_event::execute() {
     agent->process_event(this);
 }
 
-ServiceEndEvent::ServiceEndEvent(float t, Agent* a) : Event(t, a) {}
-void ServiceEndEvent::execute() {
+service_end_event::service_end_event(float t, Agent* a) : Event(t, a) {}
+void service_end_event::execute() {
     agent->process_event(this);
 }
